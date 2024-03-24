@@ -29,7 +29,9 @@ exclude:
   - pages/info/
 
 include:
+  - pages/info/foster_tab.md
   - pages/info/foster_tab_variant1.md
+  - pages/info/foster_tab_variant2.md
 
 # these are the files and directories that jekyll will exclude from the build
 
