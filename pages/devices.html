@@ -207,6 +207,14 @@ function showFilters() {
 </div>
 
 {%- for device in sorted %}
+
+{%- assign url = "devices/" | append: device.codename | append: "/" | relative_url %}
+{%- assign match = site.pages | where: "url", url %}
+
+{%- if match == empty %}
+{%- continue %}
+{%- endif %}
+
 {%- if device.vendor != lastVendor %}
 {%- assign lastVendor = device.vendor %}
 {% capture vendorId %}{{ device.vendor | slugify }}{% endcapture %}
@@ -218,7 +226,6 @@ function showFilters() {
 <div class="devices" data-vendor="{{ vendorId }}">
 {%- endif %}
 
-{%- assign url = "devices/" | append: device.codename | append: "/" | relative_url %}
 {%- if device.maintainers == empty %}
 {%- assign class="discontinued hidden" %}
 {%- else %}
